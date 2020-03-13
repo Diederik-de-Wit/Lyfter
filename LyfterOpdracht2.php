@@ -9,7 +9,9 @@
             background-image: url("Lyfter.jfif");
             color: white;
         }
-
+        p{
+            color: white;
+        }
     </style>
 </head>
 
@@ -37,11 +39,11 @@ try {
 <body>
 <title>LyfterOpdracht2</title>
 <H1>Lyfter Opdracht 2</H1>
-<h2>Diederik de Wit</h2>
-<h2>"FIZZ AND BUZZ"</h2><hr/>
+<h1>Diederik de Wit</h1>
+<h1>"FIZZ AND BUZZ"</h1><hr/>
 
 <div class="Intro">
-    <h3> # Description </h3>
+    <h2> # Description </h2>
     <p>Players generally sit in a circle.
         The first player says the number “1”, and each player says next number in turn.
         However, any number divisible by X (for example, three) is replaced by the word fizz, and any divisible by Y (for example, five) by the word buzz.

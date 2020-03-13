@@ -43,9 +43,8 @@ try {
 <h1>Diederik de Wit</h1>
 <h1>"TRICK OR TREAT"</h1><hr/>
 
-<div class="Intro">
     <h2> # Description </h2>
-    <p>PEveryone knows what Halloween is and how children love it.
+    <p>Everyone knows what Halloween is and how children love it.
         Children in costumes travel from house to house asking for treats with a phrase "Trick or treat".
         After that, they divide the treats equally among all. This year, they collected tons of candies, and need your help to share everything equally.
         You know that children receive different number of candies depending on their costume: vampire gets 3 candies from one house, zombie – 4 candies, and witch – 5 candies.
@@ -71,7 +70,6 @@ try {
         - Loop trough the strings, each string contains a group of children and the amount of houses they have been to
         - Output the amount of candy each kid gets at the end of the night
     </p>
-</div>
 </body>
 </html>
 
@@ -82,24 +80,43 @@ try {
     <br>
     <?php
 
-    $vampier = 3;
-    $zombie = 4;
-    $witch = 5;
+    $nights = convertFileToArray("Candy.txt");
 
-    $voegtoe = file("Candy.txt");
-    foreach ($voegtoe as $tekst) {
-        foreach (str_split($tekst) as $txt) {
-           $gemV = $vampier * ("aantal in .txt");
-               $gemZ = $zombie * ("aantal in .txt");
-               $gemW = $witch * ("aantal in .txt");
+    foreach($nights as $night){
+        $vampires = $night['Vampires'];
+        $zombies = $night["Zombies"];
+        $witches = $night['Witches'];
+        $houses = $night['Houses'];
 
-               $gem = $gemV + $gemZ + $gemW;
+        $candies = ($vampires*3+$zombies*4+$witches*5)*$houses;
+        $children = $vampires+$zombies+$witches;
 
-               $gem / aantal = $gemmiddelde;
-               echo "$gemmiddelde";
+
+        $givethesechildrencandies = $candies/$children;
+        $floorthesechildren = floor($givethesechildrencandies);
+
+        echo "Vampires: $vampires, Zombies: $zombies, Witches: $witches, Houses: $houses = Candies: $candies<br/>";
+        echo "Children: $children. Candies: $candies / Children: $children = $floorthesechildren<br/>";
+    }
+
+    function convertFileToArray($filename){
+        $lines = array();
+        $myfile = fopen("$filename", "r") or die("Bestand niet gevonden!");
+        while(!feof($myfile)) {
+            $line = array();
+            $myLine = fgets($myfile);
+            $cats = explode(',', $myLine);
+            foreach($cats as $cat){
+                $type = explode(':', $cat);
+                $line[str_replace(' ', '', $type[0])] = str_replace(' ', '', $type[1]);
+            }
+            array_push($lines, $line);
         }
+        fclose($myfile);
+        return $lines;
     }
     ?>
+<h1>Hij klopt volledig, maar het lukt me niet om de error weg te krijgen on line 93</h1>
 
     <br/><br/></div>
     <center>
@@ -108,7 +125,7 @@ try {
     </center>
 <?php
 
-$query = "SELECT * FROM opdracht2";
+$query = "SELECT * FROM opdracht4";
 $project = $conn->prepare($query);
 
 if ($project->execute()) {
@@ -116,7 +133,7 @@ if ($project->execute()) {
     foreach ($res as $rij) {
         echo '<center>';
         echo "<h2>";
-        echo "<a href='LOpdracht2Code.php?vnr=" . $rij->bid . "'>$rij->bid</a>";
+        echo "<a href='LOpdracht4Code.php?vnr=" . $rij->fid . "'>$rij->fid</a>";
         echo "</h2>";
         echo "</center>";
     }
