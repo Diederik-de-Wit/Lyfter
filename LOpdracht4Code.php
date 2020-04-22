@@ -35,8 +35,8 @@
 
     if(isset($_GET['vnr'])) {
 
-        $fid = $_GET['vnr'];
-        $query = "SELECT * FROM opdracht4 WHERE fid = '" . $fid . "'";
+        $did = $_GET['vnr'];
+        $query = "SELECT * FROM opdracht4 WHERE did = '" . $did . "'";
         $stmt = $conn->prepare($query);
         if ($stmt->execute()) {
 
@@ -46,7 +46,7 @@
     ?>
 
     <form method="POST">
-        <input type="text" name="txtNummer" readonly value="<?php echo $rij->fid; ?>"/>
+        <input type="text" name="txtNummer" readonly value="<?php echo $rij->did; ?>"/>
         <h2>De code voor "TRICK OR TREAT" (uit database gehaald):</h2>
         <textarea readonly name="txtType" cols="80" rows="50"><?php echo stripslashes($rij->code); ?></textarea>
     </form>

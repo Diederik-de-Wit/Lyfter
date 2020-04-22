@@ -133,7 +133,7 @@ if ($project->execute()) {
     foreach ($res as $rij) {
         echo '<center>';
         echo "<h2>";
-        echo "<a href='LOpdracht4Code.php?vnr=" . $rij->fid . "'>$rij->fid</a>";
+        echo "<a href='LOpdracht4Code.php?vnr=" . $rij->did . "'>$rij->did</a>";
         echo "</h2>";
         echo "</center>";
     }
